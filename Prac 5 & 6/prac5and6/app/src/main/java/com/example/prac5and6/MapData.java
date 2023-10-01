@@ -1,4 +1,4 @@
-package ...;
+package com.example.prac5and6;
 
 import java.util.Random;
 

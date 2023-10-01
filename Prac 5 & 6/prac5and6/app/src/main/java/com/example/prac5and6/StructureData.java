@@ -1,4 +1,4 @@
-package ...;
+package com.example.prac5and6;
 
 import java.util.Arrays;
 import java.util.List;
@@ -81,5 +81,10 @@ public class StructureData
     public void remove(int i)
     {
         structureList.remove(i);
+    }
+
+    public List<Structure> getList()
+    {
+        return structureList;
     }
 }

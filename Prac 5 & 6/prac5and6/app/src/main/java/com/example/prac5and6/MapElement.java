@@ -1,4 +1,4 @@
-package ...;
+package com.example.prac5and6;
 
 /**
  * Represents a single grid square in the map. Each map element has both terrain and an optional
