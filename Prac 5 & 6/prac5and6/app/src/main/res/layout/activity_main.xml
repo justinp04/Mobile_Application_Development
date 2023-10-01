@@ -14,6 +14,7 @@
         app:layout_constraintGuide_percent="0.9"></androidx.constraintlayout.widget.Guideline>
 
     <FrameLayout
+        android:id="@+id/mapFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/guideline0.9"
@@ -22,6 +23,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
+        android:id="@+id/resourceFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

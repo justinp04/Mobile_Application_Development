@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,true));
         */
         /*Grid layout with two column*/
-        int spanCount = 2;
+        int spanCount = 1;
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, spanCount,
                 GridLayoutManager.VERTICAL, false);
         rv.setLayoutManager(gridLayoutManager);
