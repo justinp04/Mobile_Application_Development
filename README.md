@@ -1,2 +1,1 @@
-# hackathon-2023
-Containing all Terminal Illness's docs and source code for our final solution
+# Mobile Application Development (MAD) Unit Work for my study period of 2023 Semester 2
