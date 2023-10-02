@@ -3,10 +3,15 @@ package com.example.prac5and6;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,6 +29,8 @@ public class MapFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    MapData data = MapData.get();
+
     public MapFragment() {
         // Required empty public constructor
     }
@@ -37,7 +44,8 @@ public class MapFragment extends Fragment {
      * @return A new instance of fragment map.
      */
     // TODO: Rename and change types and number of parameters
-    public static MapFragment newInstance(String param1, String param2) {
+    public static MapFragment newInstance(String param1, String param2)
+    {
         MapFragment fragment = new MapFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
@@ -60,5 +68,35 @@ public class MapFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_map, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        ArrayList<MapElement> list = new ArrayList<>();
+
+        // Get the information to be stored.
+        for(int i = 0; i < data.HEIGHT; i++)
+        {
+            for(int j = 0; j < data.WIDTH; j++)
+            {
+                list.add(MapData.get(i ,j));
+            }
+        }
+
+        // The number of rows the map should have
+        int spanCount = data.HEIGHT;
+        Log.d("HEIGHT","The height is: " + data.HEIGHT);
+
+        // Make a reference to the RecyclerView
+        RecyclerView rv = view.findViewById(R.id.mapRecycler);
+
+        // Set the layout manager
+        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), spanCount, GridLayoutManager.HORIZONTAL,false);
+        rv.setLayoutManager(layoutManager);
+
+        MapAdapter adapter = new MapAdapter(list);
+        rv.setAdapter(adapter);
     }
 }

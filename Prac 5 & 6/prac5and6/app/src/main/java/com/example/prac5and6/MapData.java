@@ -22,7 +22,7 @@ public class MapData
             R.drawable.ic_grass3, R.drawable.ic_grass4};
 
     private static final Random rng = new Random();
-    private MapElement[][] grid;
+    private static MapElement[][] grid;
 
     private static MapData instance = null;
 
@@ -179,7 +179,7 @@ public class MapData
         this.grid = generateGrid();
     }
 
-    public MapElement get(int i, int j)
+    public static MapElement get(int i, int j)
     {
         return grid[i][j];
     }

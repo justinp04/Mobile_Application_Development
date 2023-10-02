@@ -3,9 +3,10 @@ package com.example.prac5and6;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+
+import com.example.prac5and6.resource.ResourceFragment;
 
 public class MainActivity extends AppCompatActivity
 {

@@ -1,4 +1,6 @@
-package com.example.prac5and6;
+package com.example.prac5and6.resource;
+
+import com.example.prac5and6.R;
 
 import java.util.Arrays;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.example.prac5and6;
+package com.example.prac5and6.resource;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -6,6 +6,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.prac5and6.R;
 
 
 // The purpose of this class is to hold references to the views in the list item layout.
