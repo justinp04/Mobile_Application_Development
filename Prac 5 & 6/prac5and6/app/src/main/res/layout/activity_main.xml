@@ -14,18 +14,21 @@
         app:layout_constraintGuide_percent="0.9"></androidx.constraintlayout.widget.Guideline>
 
     <FrameLayout
+        android:id="@+id/mapFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/guideline0.9"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/resourceFragment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
+        android:id="@+id/resourceFragment"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline0.9"></FrameLayout>
+        app:layout_constraintTop_toBottomOf="@id/mapFragment"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

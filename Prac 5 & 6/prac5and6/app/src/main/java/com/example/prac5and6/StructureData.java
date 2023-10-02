@@ -1,8 +1,7 @@
-package ...;
+package com.example.prac5and6;
 
 import java.util.Arrays;
 import java.util.List;
-
 /**
  * Stores the list of possible structures. This has a static get() method for retrieving an
  * instance, rather than calling the constructor directly.
@@ -81,5 +80,10 @@ public class StructureData
     public void remove(int i)
     {
         structureList.remove(i);
+    }
+
+    public List<Structure> getList()
+    {
+        return structureList;
     }
 }
