@@ -6,8 +6,6 @@ import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 
-import com.example.prac5and6.resource.ResourceFragment;
-
 public class MainActivity extends AppCompatActivity
 {
     MapFragment map = new MapFragment();

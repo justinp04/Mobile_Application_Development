@@ -1,4 +1,4 @@
-package com.example.prac5and6.resource;
+package com.example.prac5and6;
 
 import android.view.View;
 import android.widget.ImageView;

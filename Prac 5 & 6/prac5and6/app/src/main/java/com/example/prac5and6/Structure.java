@@ -1,4 +1,4 @@
-package com.example.prac5and6.resource;
+package com.example.prac5and6;
 
 /**
  * Represents a possible structure to be placed on the map. A structure simply contains a drawable

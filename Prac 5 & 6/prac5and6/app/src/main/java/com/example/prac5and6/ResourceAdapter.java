@@ -1,4 +1,4 @@
-package com.example.prac5and6.resource;
+package com.example.prac5and6;
 
 import java.util.*;
 
@@ -7,8 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.example.prac5and6.R;
 
 public class ResourceAdapter extends RecyclerView.Adapter<ResourceVH>
 {

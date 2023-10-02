@@ -1,6 +1,7 @@
 package com.example.recycleviewdemo;
 
-public class MyData {
+public class MyData
+{
     private String name;
     private String phoneNumber;
     public MyData(String name, String phoneNumber) {

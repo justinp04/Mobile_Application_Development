@@ -1,10 +1,7 @@
-package com.example.prac5and6.resource;
-
-import com.example.prac5and6.R;
+package com.example.prac5and6;
 
 import java.util.Arrays;
 import java.util.List;
-
 /**
  * Stores the list of possible structures. This has a static get() method for retrieving an
  * instance, rather than calling the constructor directly.

@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class MyDataAdapter extends RecyclerView.Adapter<MyDataVH> {
+public class MyDataAdapter extends RecyclerView.Adapter<MyDataVH>
+{
 
     ArrayList<MyData> data;
     public MyDataAdapter(ArrayList<MyData> data){

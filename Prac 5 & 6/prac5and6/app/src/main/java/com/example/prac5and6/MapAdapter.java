@@ -2,8 +2,6 @@ package com.example.prac5and6;
 
 /* The purpose of the adapter is to assign the information to the view holder*/
 
-import java.util.*;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +13,9 @@ import java.util.ArrayList;
 public class MapAdapter extends RecyclerView.Adapter<MapVH>
 {
     // Make a reference to the list of data that we are going to be referring to
-    ArrayList<MapElement> elements;
+    MapData elements;
 
-    public MapAdapter(ArrayList<MapElement> elements){this.elements = elements;}
+    public MapAdapter(MapData elements){this.elements = elements;}
 
     @NonNull
     @Override
@@ -31,7 +29,7 @@ public class MapAdapter extends RecyclerView.Adapter<MapVH>
         View view = inflater.inflate(R.layout.map_list_item_layout, parent, false);
 
         // Create an instance of a viewholder and have
-        MapVH mapVH = new MapVH(view);
+        MapVH mapVH = new MapVH(view, parent);
 
         return mapVH;
     }
@@ -41,7 +39,10 @@ public class MapAdapter extends RecyclerView.Adapter<MapVH>
     public void onBindViewHolder(@NonNull MapVH holder, int position)
     {
         // Get the information to be binded
-        MapElement element = elements.get(position);
+        int row = position % MapData.HEIGHT;
+        int col = position / MapData.HEIGHT;
+
+        MapElement element = elements.get(row, col);
 
         holder.imageNW.setImageResource(element.getNorthWest());
         holder.imageNE.setImageResource(element.getNorthEast());
@@ -56,7 +57,8 @@ public class MapAdapter extends RecyclerView.Adapter<MapVH>
     }
 
     @Override
-    public int getItemCount() {
-        return elements.size();
+    public int getItemCount()
+    {
+        return elements.HEIGHT * elements.WIDTH;
     }
 }

@@ -77,6 +77,7 @@ public class MapFragment extends Fragment {
         ArrayList<MapElement> list = new ArrayList<>();
 
         // Get the information to be stored.
+
         for(int i = 0; i < data.HEIGHT; i++)
         {
             for(int j = 0; j < data.WIDTH; j++)
@@ -85,18 +86,13 @@ public class MapFragment extends Fragment {
             }
         }
 
-        // The number of rows the map should have
-        int spanCount = data.HEIGHT;
-        Log.d("HEIGHT","The height is: " + data.HEIGHT);
-
         // Make a reference to the RecyclerView
         RecyclerView rv = view.findViewById(R.id.mapRecycler);
 
         // Set the layout manager
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), spanCount, GridLayoutManager.HORIZONTAL,false);
-        rv.setLayoutManager(layoutManager);
+        rv.setLayoutManager(new GridLayoutManager(getActivity(), MapData.HEIGHT, GridLayoutManager.HORIZONTAL,false));
 
-        MapAdapter adapter = new MapAdapter(list);
+        MapAdapter adapter = new MapAdapter(data);
         rv.setAdapter(adapter);
     }
 }
