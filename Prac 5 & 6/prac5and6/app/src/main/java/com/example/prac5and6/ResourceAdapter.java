@@ -2,9 +2,12 @@ package com.example.prac5and6;
 
 import java.util.*;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,6 +32,20 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceVH>
 
         // Creates the view holder to hold to correct view which was inflated in the previous line.
         ResourceVH myResourceVH = new ResourceVH(view);
+
+        // Place structure if an element has been built on the grid
+        view.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Log.d("BUTTON PRESS", "Button has been pressed: " + );
+
+                // Must check to see if a structure already exists.
+            }
+        });
+
+
         return myResourceVH;
     }
 

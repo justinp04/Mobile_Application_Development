@@ -2,9 +2,12 @@ package com.example.prac5and6;
 
 /* The purpose of the adapter is to assign the information to the view holder*/
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,6 +34,20 @@ public class MapAdapter extends RecyclerView.Adapter<MapVH>
         // Create an instance of a viewholder and have
         MapVH mapVH = new MapVH(view, parent);
 
+
+        // Place structure if an element has been built on the grid
+        view.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Toast.makeText(view.getContext(), "Button has been clicked", Toast.LENGTH_SHORT);
+                Log.d("BUTTON PRESS", "Button has been pressed");
+
+                // Must check to see if a structure already exists.
+            }
+        });
+
         return mapVH;
     }
 
@@ -48,12 +65,6 @@ public class MapAdapter extends RecyclerView.Adapter<MapVH>
         holder.imageNE.setImageResource(element.getNorthEast());
         holder.imageSE.setImageResource(element.getSouthEast());
         holder.imageSW.setImageResource(element.getSouthWest());
-
-        // Place structure if an element has been built on the grid
-        if(element.getStructure() != null)
-        {
-
-        }
     }
 
     @Override
