@@ -1,5 +1,6 @@
 package com.example.prac5and6;
 
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -18,7 +19,6 @@ public class MapVH extends RecyclerView.ViewHolder
     public ImageView imageNE;
     public ImageView imageSE;
     public ImageView imageSW;
-
     public ImageView structure;
 
     public MapVH(@NonNull View itemView, ViewGroup parent)
@@ -34,5 +34,15 @@ public class MapVH extends RecyclerView.ViewHolder
         ViewGroup.LayoutParams lp = itemView.getLayoutParams();
         lp.width = size;
         lp.height = size;
+
+        structure.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                structure.setImageDrawable(R.drawable.ic_building1);
+                Log.d("BUTTON CLICK", "STRUCTURE button has been clicked");
+            }
+        });
     }
 }

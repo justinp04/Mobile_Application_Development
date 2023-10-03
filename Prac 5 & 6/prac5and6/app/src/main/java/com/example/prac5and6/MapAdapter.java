@@ -51,15 +51,6 @@ public class MapAdapter extends RecyclerView.Adapter<MapVH>
         holder.imageNE.setImageResource(element.getNorthEast());
         holder.imageSE.setImageResource(element.getSouthEast());
         holder.imageSW.setImageResource(element.getSouthWest());
-
-        holder.structure.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Log.d("BUTTON CLICK", "STRUCTURE button has been clicked");
-            }
-        });
     }
 
     @Override
