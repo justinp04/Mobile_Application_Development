@@ -27,6 +27,7 @@ public class ResourceFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private int drawableId;
 
     StructureData data = StructureData.get();
     public ResourceFragment()
@@ -92,5 +93,10 @@ public class ResourceFragment extends Fragment {
         // Set the adapter for the recycler view
         ResourceAdapter adapter = new ResourceAdapter(list);
         rv.setAdapter(adapter);
+    }
+
+    public int getDrawableID()
+    {
+        return drawableId;
     }
 }

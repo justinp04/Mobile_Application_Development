@@ -34,20 +34,6 @@ public class MapAdapter extends RecyclerView.Adapter<MapVH>
         // Create an instance of a viewholder and have
         MapVH mapVH = new MapVH(view, parent);
 
-
-        // Place structure if an element has been built on the grid
-        view.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Toast.makeText(view.getContext(), "Button has been clicked", Toast.LENGTH_SHORT);
-                Log.d("BUTTON PRESS", "Button has been pressed");
-
-                // Must check to see if a structure already exists.
-            }
-        });
-
         return mapVH;
     }
 
@@ -65,6 +51,15 @@ public class MapAdapter extends RecyclerView.Adapter<MapVH>
         holder.imageNE.setImageResource(element.getNorthEast());
         holder.imageSE.setImageResource(element.getSouthEast());
         holder.imageSW.setImageResource(element.getSouthWest());
+
+        holder.structure.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                Log.d("BUTTON CLICK", "STRUCTURE button has been clicked");
+            }
+        });
     }
 
     @Override

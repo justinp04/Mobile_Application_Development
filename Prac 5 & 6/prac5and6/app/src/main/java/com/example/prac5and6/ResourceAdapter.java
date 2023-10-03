@@ -16,7 +16,6 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceVH>
     // Start by referencing the data that will be scrollable.
     // For us, this data is stored in StructureData
     ArrayList<Structure> data;
-
     public ResourceAdapter(ArrayList<Structure> data)
     {
         this.data = data;
@@ -32,20 +31,6 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceVH>
 
         // Creates the view holder to hold to correct view which was inflated in the previous line.
         ResourceVH myResourceVH = new ResourceVH(view);
-
-        // Place structure if an element has been built on the grid
-        view.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                Log.d("BUTTON PRESS", "Button has been pressed: " + );
-
-                // Must check to see if a structure already exists.
-            }
-        });
-
-
         return myResourceVH;
     }
 
@@ -62,6 +47,9 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceVH>
 
         // Assigns the title of the image to the text view
         holder.label.setText(dataValue.getLabel());
+
+        // Have the holder remember what image resource it uses.
+        holder.drawableId = dataValue.getDrawableId();
     }
 
     @Override

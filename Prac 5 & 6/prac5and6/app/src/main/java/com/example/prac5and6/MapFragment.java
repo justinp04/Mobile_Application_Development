@@ -29,6 +29,8 @@ public class MapFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    public ResourceFragment resourceFragment;
+
     MapData data = MapData.get();
 
     public MapFragment() {
@@ -94,5 +96,11 @@ public class MapFragment extends Fragment {
 
         MapAdapter adapter = new MapAdapter(data);
         rv.setAdapter(adapter);
+    }
+
+    // Mutator to set the resource fragment
+    public void setResourceFragment(ResourceFragment rf)
+    {
+        this.resourceFragment = rf;
     }
 }
