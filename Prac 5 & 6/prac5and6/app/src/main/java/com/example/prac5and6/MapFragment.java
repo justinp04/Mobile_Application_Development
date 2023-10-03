@@ -29,7 +29,10 @@ public class MapFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    // A reference to the resource fragment
     public ResourceFragment resourceFragment;
+
+    public int drawable;
 
     MapData data = MapData.get();
 
@@ -57,7 +60,8 @@ public class MapFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -99,8 +103,15 @@ public class MapFragment extends Fragment {
     }
 
     // Mutator to set the resource fragment
-    public void setResourceFragment(ResourceFragment rf)
+//    public void setResourceFragment()
+//    {
+//        this.resourceFragment = new ResourceFragment();
+//    }
+
+    public int getStructure()
     {
-        this.resourceFragment = rf;
+        this.resourceFragment = new ResourceFragment();
+        Log.d("MAPFRAG", "" + resourceFragment.getDrawableId());
+        return resourceFragment.getDrawableId();
     }
 }

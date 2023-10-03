@@ -58,5 +58,4 @@ public class MainActivity extends AppCompatActivity
             fm.beginTransaction().replace(R.id.resourceFragment, resource).commit();
         }
     }
-
 }

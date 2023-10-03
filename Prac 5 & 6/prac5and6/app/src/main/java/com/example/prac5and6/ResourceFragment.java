@@ -3,9 +3,11 @@ package com.example.prac5and6;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +29,11 @@ public class ResourceFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    // This is the reference to the currently selected fragment
     private int drawableId;
+
+//    private MainActivityData mainActivityData = new ViewModelProvider(getActivity()).get(MainActivityData.class);
 
     StructureData data = StructureData.get();
     public ResourceFragment()
@@ -95,8 +101,16 @@ public class ResourceFragment extends Fragment {
         rv.setAdapter(adapter);
     }
 
-    public int getDrawableID()
+    // Method to retrieve the currently selected drawable
+    public int getDrawableId()
     {
         return drawableId;
+    }
+
+    // Set the drawableId
+    public void setDrawableId(int drawableId)
+    {
+        Log.d("RESOURCEFRAG", "" + drawableId);
+        this.drawableId = drawableId;
     }
 }

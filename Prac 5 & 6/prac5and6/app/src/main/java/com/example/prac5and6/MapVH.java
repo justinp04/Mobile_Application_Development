@@ -40,8 +40,9 @@ public class MapVH extends RecyclerView.ViewHolder
             @Override
             public void onClick(View view)
             {
-                structure.setImageDrawable(R.drawable.ic_building1);
-                Log.d("BUTTON CLICK", "STRUCTURE button has been clicked");
+                MapFragment mapFragment = new MapFragment();
+                int drawable = mapFragment.getStructure();
+                Log.d("MAPVH", "" + drawable);
             }
         });
     }

@@ -2,6 +2,7 @@ package com.example.prac5and6;
 
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroupOverlay;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -32,7 +33,8 @@ public class ResourceVH extends RecyclerView.ViewHolder
             @Override
             public void onClick(View view)
             {
-                Log.d("BUTTON CLICK","Button has been clikcked yay " + drawableId);
+                ResourceFragment rf = new ResourceFragment();
+                rf.setDrawableId(drawableId);
             }
         });
 
