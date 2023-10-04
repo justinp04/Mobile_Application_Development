@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.prac5and6.R;
@@ -43,7 +44,8 @@ public class ResourceVH extends RecyclerView.ViewHolder
             @Override
             public void onClick(View view)
             {
-                Log.d("BUTTON CLICK","Button has been clikcked yay" + drawableId);
+                ResourceFragment rf = new ResourceFragment();
+                rf.setDrawableId(drawableId);
             }
         });
     }

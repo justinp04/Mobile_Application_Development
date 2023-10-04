@@ -3,6 +3,8 @@ package com.example.prac5and6;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -73,7 +75,11 @@ public class MapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        View view = inflater.inflate(R.layout.fragment_map, container, false);
+
+        MainActivityData mainActivityData = new ViewModelProvider(getActivity()).get(MainActivityData.class);
+
+        return view;
     }
 
     @Override
@@ -110,8 +116,8 @@ public class MapFragment extends Fragment {
 
     public int getStructure()
     {
-        this.resourceFragment = new ResourceFragment();
-        Log.d("MAPFRAG", "" + resourceFragment.getDrawableId());
-        return resourceFragment.getDrawableId();
+//        this.resourceFragment = new ResourceFragment();
+//        Log.d("MAPFRAG", "" + resourceFragment.getDrawableId());
+        return drawable;
     }
 }
