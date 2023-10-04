@@ -3,6 +3,7 @@ package com.example.prac5and6;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -76,8 +77,27 @@ public class MapFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_map, container, false);
-
         MainActivityData mainActivityData = new ViewModelProvider(getActivity()).get(MainActivityData.class);
+
+        view.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                setStructure(mainActivityData);
+                Log.d("ONCLICK", "ONLICK has been called");
+            }
+        });
+
+        // Observe changes to drawableId
+        mainActivityData.drawableId.observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer drawableId) {
+                // Handle the updated drawableId here
+                drawable = drawableId;
+                Log.d("MAPFRAG", "" + drawableId);
+            }
+        });
 
         return view;
     }
@@ -109,14 +129,21 @@ public class MapFragment extends Fragment {
     }
 
     // Mutator to set the resource fragment
-//    public void setResourceFragment()
-//    {
-//        this.resourceFragment = new ResourceFragment();
-//    }
+    public void setResourceFragment(Fragment resourceFragment)
+    {
+        this.resourceFragment = (ResourceFragment)resourceFragment;
+    }
+
+    public void setStructure(MainActivityData mainActivityData)
+    {
+        drawable = mainActivityData.getDrawableId();
+        Log.d("MAPFRAG", "" + resourceFragment.getDrawableId());
+    }
+
 
     public int getStructure()
     {
-//        this.resourceFragment = new ResourceFragment();
+        drawable = resourceFragment.getDrawableId();
 //        Log.d("MAPFRAG", "" + resourceFragment.getDrawableId());
         return drawable;
     }

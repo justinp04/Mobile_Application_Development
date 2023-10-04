@@ -16,7 +16,7 @@ import android.widget.Button;
  * Use the {@link MenuFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class gMenuFragment extends Fragment {
+public class MenuFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -65,9 +65,9 @@ public class gMenuFragment extends Fragment {
         int orientation = getResources().getConfiguration().orientation;
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
+        // Gets the instance of MainActivityData from the current activity and assigns it to this instance.
         MainActivityData mainActivityDataViewModel = new ViewModelProvider(getActivity()).get(MainActivityData.class);
         Button addNote = view.findViewById(R.id.addNote);
-        addNote.getId();
 
         addNote.setOnClickListener(new View.OnClickListener()
         {

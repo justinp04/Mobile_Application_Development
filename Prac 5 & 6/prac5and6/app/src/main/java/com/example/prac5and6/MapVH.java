@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.prac5and6.R;
@@ -40,9 +42,12 @@ public class MapVH extends RecyclerView.ViewHolder
             @Override
             public void onClick(View view)
             {
-                MapFragment mapFragment = new MapFragment();
-                int drawable = mapFragment.getStructure();
-                Log.d("MAPVH", "" + drawable);
+                MainActivityData mainActivityData = new ViewModelProvider((AppCompatActivity) view.getContext()).get(MainActivityData.class);
+                structure.setImageResource(mainActivityData.getDrawableId());
+
+//                MapFragment mapFragment = new MapFragment();
+//                int drawable = mapFragment.getStructure();
+                Log.d("MAPVH", "" + mainActivityData.getDrawableId());
             }
         });
     }

@@ -3,6 +3,7 @@ package com.example.prac5and6;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,8 +33,6 @@ public class ResourceFragment extends Fragment {
 
     // This is the reference to the currently selected fragment
     private int drawableId;
-
-//    private MainActivityData mainActivityData = new ViewModelProvider(getActivity()).get(MainActivityData.class);
 
     StructureData data = StructureData.get();
     public ResourceFragment()
@@ -79,7 +78,14 @@ public class ResourceFragment extends Fragment {
 
         MainActivityData mainActivityData = new ViewModelProvider(getActivity()).get(MainActivityData.class);
 
-        mainActivityData.setDrawableId(drawableId);
+        mainActivityData.drawableId.observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer drawableId) {
+                // Handle the updated drawableId here
+                setDrawableId(drawableId);
+                Log.d("MAPFRAG", "" + drawableId);
+            }
+        });
 
         return view;
     }
