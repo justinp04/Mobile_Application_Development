@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 public class ResourceAdapter extends RecyclerView.Adapter<ResourceVH>
@@ -42,14 +44,34 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceVH>
         // This value is to store the single piece of data that we will be referencing.
         Structure dataValue = data.get(position);
 
+        // Have the holder remember what image resource it uses.
+        holder.drawableId = dataValue.getDrawableId();
+
         // Assigns the image to the ImageView
         holder.image.setImageResource(dataValue.getDrawableId());
+
+        holder.image.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                MainActivityData mainActivityData = new ViewModelProvider((AppCompatActivity) view.getContext()).get(MainActivityData.class);
+                mainActivityData.setDrawableId(holder.drawableId);
+            }
+        });
 
         // Assigns the title of the image to the text view
         holder.label.setText(dataValue.getLabel());
 
-        // Have the holder remember what image resource it uses.
-        holder.drawableId = dataValue.getDrawableId();
+        holder.label.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                MainActivityData mainActivityData = new ViewModelProvider((AppCompatActivity) view.getContext()).get(MainActivityData.class);
+                mainActivityData.setDrawableId(holder.drawableId);
+            }
+        });
     }
 
     @Override

@@ -37,18 +37,5 @@ public class MapVH extends RecyclerView.ViewHolder
         lp.width = size;
         lp.height = size;
 
-        structure.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                MainActivityData mainActivityData = new ViewModelProvider((AppCompatActivity) view.getContext()).get(MainActivityData.class);
-                structure.setImageResource(mainActivityData.getDrawableId());
-
-//                MapFragment mapFragment = new MapFragment();
-//                int drawable = mapFragment.getStructure();
-                Log.d("MAPVH", "" + mainActivityData.getDrawableId());
-            }
-        });
     }
 }
