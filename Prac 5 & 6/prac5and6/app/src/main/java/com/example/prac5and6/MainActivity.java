@@ -18,11 +18,16 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         // Load the fragments
-        loadMapFragment();
-        loadResourceFragment();
+        Fragment resource = loadResourceFragment();
+        Fragment map = loadMapFragment();
+
+        if(map instanceof MapFragment)
+        {
+            ((MapFragment) map).setResourceFragment(resource);
+        }
     }
 
-    private void loadMapFragment()
+    private Fragment loadMapFragment()
     {
         // To load a fragment, we must create a fragment manager to bring it in
         FragmentManager fm = getSupportFragmentManager();
@@ -41,9 +46,11 @@ public class MainActivity extends AppCompatActivity
             // If there is already a fragment there
             fm.beginTransaction().replace(R.id.mapFragment, map).commit();
         }
+
+        return frag;
     }
 
-    private void loadResourceFragment()
+    private Fragment loadResourceFragment()
     {
         FragmentManager fm = getSupportFragmentManager();
 
@@ -57,6 +64,7 @@ public class MainActivity extends AppCompatActivity
         {
             fm.beginTransaction().replace(R.id.resourceFragment, resource).commit();
         }
-    }
 
+        return frag;
+    }
 }

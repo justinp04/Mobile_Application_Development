@@ -28,7 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
         // An observer to wait for certain button clicks
         MainActivityData mainActivityDataViewModel = new ViewModelProvider(this).get(MainActivityData.class);
-        mainActivityDataViewModel.clickedValue.observe(this, new Observer<Integer>() {
+
+        mainActivityDataViewModel.clickedValue.observe(this, new Observer<Integer>()
+        {
             @Override
             public void onChanged(Integer integer) {
                 if(mainActivityDataViewModel.getClickedValue() == 0)

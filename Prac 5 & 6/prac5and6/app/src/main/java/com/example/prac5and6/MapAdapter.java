@@ -2,10 +2,15 @@ package com.example.prac5and6;
 
 /* The purpose of the adapter is to assign the information to the view holder*/
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -49,11 +54,16 @@ public class MapAdapter extends RecyclerView.Adapter<MapVH>
         holder.imageSE.setImageResource(element.getSouthEast());
         holder.imageSW.setImageResource(element.getSouthWest());
 
-        // Place structure if an element has been built on the grid
-        if(element.getStructure() != null)
+        holder.structure.setOnClickListener(new View.OnClickListener()
         {
-
-        }
+            @Override
+            public void onClick(View view)
+            {
+                MainActivityData mainActivityData = new ViewModelProvider((AppCompatActivity) view.getContext()).get(MainActivityData.class);
+                holder.structure.setImageResource(mainActivityData.getDrawableId());
+//                Log.d("MAPVH", "" + mainActivityData.getDrawableId());
+            }
+        });
     }
 
     @Override

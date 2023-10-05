@@ -65,9 +65,9 @@ public class MenuFragment extends Fragment {
         int orientation = getResources().getConfiguration().orientation;
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
+        // Gets the instance of MainActivityData from the current activity and assigns it to this instance.
         MainActivityData mainActivityDataViewModel = new ViewModelProvider(getActivity()).get(MainActivityData.class);
         Button addNote = view.findViewById(R.id.addNote);
-        addNote.getId();
 
         addNote.setOnClickListener(new View.OnClickListener()
         {

@@ -3,6 +3,9 @@ package com.example.prac5and6;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +31,11 @@ public class MapFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    // A reference to the resource fragment
+    public ResourceFragment resourceFragment;
+
+    public int drawable;
 
     MapData data = MapData.get();
 
@@ -55,7 +63,8 @@ public class MapFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
@@ -67,7 +76,30 @@ public class MapFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false);
+        View view = inflater.inflate(R.layout.fragment_map, container, false);
+        MainActivityData mainActivityData = new ViewModelProvider(getActivity()).get(MainActivityData.class);
+
+        view.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                setStructure(mainActivityData);
+                Log.d("ONCLICK", "ONLICK has been called");
+            }
+        });
+
+        // Observe changes to drawableId
+        mainActivityData.drawableId.observe(getViewLifecycleOwner(), new Observer<Integer>() {
+            @Override
+            public void onChanged(Integer drawableId) {
+                // Handle the updated drawableId here
+                drawable = drawableId;
+                Log.d("MAPFRAG", "" + drawableId);
+            }
+        });
+
+        return view;
     }
 
     @Override
@@ -94,5 +126,25 @@ public class MapFragment extends Fragment {
 
         MapAdapter adapter = new MapAdapter(data);
         rv.setAdapter(adapter);
+    }
+
+    // Mutator to set the resource fragment
+    public void setResourceFragment(Fragment resourceFragment)
+    {
+        this.resourceFragment = (ResourceFragment)resourceFragment;
+    }
+
+    public void setStructure(MainActivityData mainActivityData)
+    {
+        drawable = mainActivityData.getDrawableId();
+        Log.d("MAPFRAG", "" + resourceFragment.getDrawableId());
+    }
+
+
+    public int getStructure()
+    {
+        drawable = resourceFragment.getDrawableId();
+//        Log.d("MAPFRAG", "" + resourceFragment.getDrawableId());
+        return drawable;
     }
 }
