@@ -103,7 +103,8 @@ public class MapFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
+    public void onViewCreated(View view, Bundle savedInstanceState)
+    {
         super.onViewCreated(view, savedInstanceState);
 
         ArrayList<MapElement> list = new ArrayList<>();
