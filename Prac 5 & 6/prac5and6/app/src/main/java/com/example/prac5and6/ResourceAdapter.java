@@ -2,8 +2,11 @@ package com.example.prac5and6;
 
 import java.util.*;
 
+import android.content.ClipData;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
@@ -57,6 +60,27 @@ public class ResourceAdapter extends RecyclerView.Adapter<ResourceVH>
             {
                 MainActivityData mainActivityData = new ViewModelProvider((AppCompatActivity) view.getContext()).get(MainActivityData.class);
                 mainActivityData.setDrawableId(holder.drawableId);
+            }
+        });
+
+        holder.image.setOnTouchListener(new View.OnTouchListener()
+        {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent)
+            {
+                MainActivityData mainActivityData = new ViewModelProvider((AppCompatActivity) view.getContext()).get(MainActivityData.class);
+                mainActivityData.setDrawableId(holder.drawableId);
+
+                String id = Integer.toString(holder.drawableId);
+
+                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN)
+                {
+                    ClipData data = ClipData.newPlainText("drawable", id);
+                    View.DragShadowBuilder shadowBuilder = new View.DragShadowBuilder(view);
+                    view.startDragAndDrop(data, shadowBuilder, view, 0);
+                    return true;
+                }
+                return false;
             }
         });
 

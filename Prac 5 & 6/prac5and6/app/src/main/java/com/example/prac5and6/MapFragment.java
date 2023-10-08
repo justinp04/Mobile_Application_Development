@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -127,6 +128,28 @@ public class MapFragment extends Fragment {
 
         MapAdapter adapter = new MapAdapter(data);
         rv.setAdapter(adapter);
+
+        Button regenerate = view.findViewById(R.id.regenerate);
+
+        regenerate.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                data.regenerate();
+
+                list.clear();
+
+                for(int i = 0; i < data.HEIGHT; i++)
+                {
+                    for(int j = 0; j < data.WIDTH; j++)
+                    {
+                        list.add(data.get(i, j));
+                    }
+                }
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
     // Mutator to set the resource fragment
