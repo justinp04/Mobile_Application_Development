@@ -2,7 +2,10 @@ package com.example.prac5and6;
 
 /* The purpose of the adapter is to assign the information to the view holder*/
 
+import android.content.ClipData;
+import android.graphics.drawable.Drawable;
 import android.util.Log;
+import android.view.DragEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +64,43 @@ public class MapAdapter extends RecyclerView.Adapter<MapVH>
             {
                 MainActivityData mainActivityData = new ViewModelProvider((AppCompatActivity) view.getContext()).get(MainActivityData.class);
                 holder.structure.setImageResource(mainActivityData.getDrawableId());
-//                Log.d("MAPVH", "" + mainActivityData.getDrawableId());
+                mainActivityData.setDrawableId(0);
+            }
+        });
+
+        holder.structure.setOnDragListener(new View.OnDragListener()
+        {
+            @Override
+            public boolean onDrag(View view, DragEvent dragEvent)
+            {
+                MainActivityData mainActivityData = new ViewModelProvider((AppCompatActivity) view.getContext()).get(MainActivityData.class);
+                int action = dragEvent.getAction();
+
+                switch(action)
+                {
+                    case DragEvent.ACTION_DRAG_STARTED:
+                        break;
+                    case DragEvent.ACTION_DRAG_ENTERED:
+                        break;
+                    case DragEvent.ACTION_DRAG_EXITED:
+                        break;
+                    case DragEvent.ACTION_DROP:
+                        View v = (View) dragEvent.getLocalState();
+                        ViewGroup owner = (ViewGroup) view.getParent();
+
+                        owner.removeView(view);
+
+                        ClipData.Item item = dragEvent.getClipData().getItemAt(0);
+
+                        holder.structure.setImageResource(Integer.parseInt(item.getText().toString()));
+                        mainActivityData.setDrawableId(0);
+
+                        break;
+                    case DragEvent.ACTION_DRAG_ENDED:
+                        break;
+                }
+
+                return true;
             }
         });
     }
@@ -70,5 +109,17 @@ public class MapAdapter extends RecyclerView.Adapter<MapVH>
     public int getItemCount()
     {
         return elements.HEIGHT * elements.WIDTH;
+    }
+
+    @Override
+    public long getItemId(int position)
+    {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position)
+    {
+        return position;
     }
 }
