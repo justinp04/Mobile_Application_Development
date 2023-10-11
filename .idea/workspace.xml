@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="938a67c0-305d-4aa3-bb7f-a0c2ae376811" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Prac 5 &amp; 6/prac5and6/app/src/main/java/com/example/prac5and6/MapAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Prac 5 &amp; 6/prac5and6/app/src/main/java/com/example/prac5and6/MapAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Prac 5 &amp; 6/prac5and6/app/src/main/java/com/example/prac5and6/ResourceAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Prac 5 &amp; 6/prac5and6/app/src/main/java/com/example/prac5and6/ResourceAdapter.java" afterDir="false" />
-    </list>
+    <list default="true" id="938a67c0-305d-4aa3-bb7f-a0c2ae376811" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
